@@ -11,7 +11,7 @@ const Gallery = require('../models/Gallery.model');
 // GET Route to display all Inutil Websites
 router.get('/gallery', async(req,res)=>{
     try{
-        let allSites = await Gallery.find().populate();
+        let allSites = await Gallery.find();
         res.json(allSites);
     }
     catch(error){
