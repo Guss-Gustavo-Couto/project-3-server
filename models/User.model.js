@@ -19,6 +19,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
+    image: { type: String },
     description: { type: String, required: true },
     media: {type: String},
     admin: { type: Boolean, required: true }

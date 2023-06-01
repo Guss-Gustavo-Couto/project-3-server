@@ -12,7 +12,7 @@ const User = require("../models/User.model");
 
 router.put("/profile/:userId", async (req, res) => {
     const { userId } = req.params;
-    const { email, password, name, description, media } = req.body;
+    const { email, password, name, image, description, media } = req.body;
 
     if(!mongoose.Types.ObjectId.isValid(userId)){
         res.status(400).json({message: 'Specified Id is not valid'}); 
@@ -21,7 +21,7 @@ router.put("/profile/:userId", async (req, res) => {
  
      try{
          let updatedProfile = await User.findByIdAndUpdate(userId, 
-         { email, password, name, description, media }, {new: true});
+         { email, password, name, image, description, media }, {new: true});
          res.json(updatedProfile);
      }
      catch(error){
