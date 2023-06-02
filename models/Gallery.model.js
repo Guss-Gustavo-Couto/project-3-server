@@ -7,9 +7,7 @@ const gallerySchema = new Schema(
     link: { type: String, required: true },
     description: { type: String, required: true },
     reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
-  },
-  {
-    isaproved: false,
+    isaproved: { type: Boolean, default: false },
   },
   {
     timestamp: true,

@@ -11,8 +11,20 @@ const Gallery = require('../models/Gallery.model');
 // GET Route to display all Inutil Websites
 router.get('/admin', async(req,res)=>{
     try{
-        let allSites = await Gallery.find().populate();
+        let allSites = await Gallery.find();
         res.json(allSites);
+    }
+    catch(error){
+        res.json(error);
+    }
+});
+
+
+router.get('/admin/:galleryId', async(req,res)=>{
+    const {galleryId} = req.params;
+    try{
+        let gallery = await Gallery.findById(galleryId);
+        res.json(gallery);
     }
     catch(error){
         res.json(error);
@@ -23,7 +35,7 @@ router.get('/admin', async(req,res)=>{
 
 router.put('/admin/:galleryId', async (req, res)=>{
     const {galleryId} = req.params;
-    const {title, image, link, description} = req.body;
+    const {title, image, link, description, isaproved} = req.body;
 
     if(!mongoose.Types.ObjectId.isValid(galleryId)){
        res.status(400).json({message: 'Specified Id is not valid'}); 
@@ -32,7 +44,7 @@ router.put('/admin/:galleryId', async (req, res)=>{
 
     try{
         let updatedGallery = await Gallery.findByIdAndUpdate(galleryId, 
-        {title, image,link, description}, {new: true});
+        {title, image,link, description, isaproved}, {new: true});
         res.json(updatedGallery);
     }
     catch(error){
