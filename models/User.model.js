@@ -19,10 +19,10 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
-    image: { type: String },
-    description: { type: String, required: true },
-    media: {type: String},
-    admin: { type: Boolean, required: true }
+    image: { type: String, default: "" },
+    description: { type: String, default: "" },
+    media: { type: String, default: "" },
+    admin: { type: Boolean, default: false },
   },
   {
     timestamps: true,

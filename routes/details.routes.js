@@ -22,7 +22,7 @@ router.get("/details/:galleryId", async (req, res) => {
   }
 
   try {
-    let foundGallery = await Gallery.findById(projectId).populate();
+    let foundGallery = await Gallery.findById(galleryId);
     res.status(200).json(foundGallery);
   } catch (error) {
     res.json(error);
