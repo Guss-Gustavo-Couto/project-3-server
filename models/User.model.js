@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const { checkout } = require("../app");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
@@ -23,6 +22,7 @@ const userSchema = new Schema(
     description: { type: String, default: "" },
     media: { type: String, default: "" },
     admin: { type: Boolean, default: false },
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
   },
   {
     timestamps: true,
