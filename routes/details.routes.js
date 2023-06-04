@@ -9,6 +9,9 @@ const mongoose = require("mongoose");
 const Gallery = require("../models/Gallery.model");
 const Review = require("../models/Review.model");
 
+// Require Cloudinary
+// const fileUploader = require("../config/cloudinary.config");
+
 // GET to display specific info of a Inutil Sit
 router.get("/details/:galleryId", async (req, res) => {
   const { galleryId } = req.params;

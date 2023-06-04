@@ -8,6 +8,9 @@ const mongoose = require('mongoose');
 // Require Models
 const Gallery = require('../models/Gallery.model');
 
+// Require Cloudinary
+// const fileUploader = require("../config/cloudinary.config");
+
 // GET Route to display all Inutil Websites
 router.get('/gallery', async(req,res)=>{
     try{

@@ -11,6 +11,7 @@ const reviewSchema = new Schema(
       required: true,
     },
     gallery: { type: Schema.Types.ObjectId, ref: "Gallery" },
+    author: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,

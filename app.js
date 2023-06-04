@@ -36,6 +36,9 @@ app.use("/", adminRoutes);
 const submitRoutes = require("./routes/submit.routes");
 app.use("/", submitRoutes);
 
+const submitedRoutes = require("./routes/submited.routes");
+app.use("/", submitedRoutes);
+
 const profileRoutes = require("./routes/profile.routes");
 app.use("/", profileRoutes);
 

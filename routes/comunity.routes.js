@@ -8,10 +8,13 @@ const mongoose = require('mongoose');
 // Require Models
 const User = require('../models/User.model');
 
+// Require Cloudinary
+// const fileUploader = require("../config/cloudinary.config");
+
 // GET Route to display all the Idiotiles
 router.get('/comunity', async(req,res)=>{
     try{
-        let allUsers = await User.find().populate();
+        let allUsers = await User.find();
         res.json(allUsers);
     }
     catch(error){

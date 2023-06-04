@@ -8,6 +8,9 @@ const mongoose = require("mongoose");
 // Require Model
 const User = require("../models/User.model");
 
+// Require Cloudinary
+// const fileUploader = require("../config/cloudinary.config");
+
 // PUT route to edit a user
 
 router.put("/profile/:userId", async (req, res) => {
