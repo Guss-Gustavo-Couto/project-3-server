@@ -5,6 +5,7 @@ const gallerySchema = new Schema(
     title: { type: String, required: true },
     image: { type: String, required: true },
     link: { type: String, required: true },
+    average: { type: Number, required: false },
     description: { type: String, required: true },
     reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
     isaproved: { type: Boolean, default: false },
