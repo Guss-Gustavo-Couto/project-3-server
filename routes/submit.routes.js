@@ -11,9 +11,8 @@ const Gallery = require('../models/Gallery.model');
 // Require Cloudinary
 const fileUploader = require("../config/cloudinary.config");
 
-
 // POST "/api/upload" => Route that receives the image, sends it to Cloudinary via the fileUploader and returns the image URL
-router.post("/submit", fileUploader.single("imageUrl"), (req, res, next) => {
+router.post("/upload", fileUploader.single("image"), (req, res, next) => {
     // console.log("file is: ", req.file)
     if (!req.file) {
       next(new Error("No file uploaded!"));

@@ -1,15 +1,10 @@
-// Require Express
 const express = require("express");
 const router = express.Router();
 
-// Require Mongoose
-const mongoose = require('mongoose');
-
-
 // GET Route to display Notification
-router.get('/submited', async(req,res)=>{
+router.get('/check', async(req,res)=>{
     try{
-        let submitedSite = res.json(submitedSite);
+        let check = res.json(checkout);
     }
     catch(error){
         res.json(error);
