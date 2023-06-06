@@ -11,10 +11,17 @@ const mongoose = require("mongoose");
 const Gallery = require("../models/Gallery.model");
 
 router.get("/", async (req, res, next) => {
-  const allGallery = await Gallery.find();
-  const latestGallery = allGallery.sort((a, b) => b.createdAt - a.createdAt);
+  try {
+    const allGallery = await Gallery.find();
+    const latestGallery = allGallery.sort((a, b) => b.createdAt - a.createdAt);
+    const allLinks = [await Gallery.link.find().populate("links")];
+    const randomLink = allLinks[Math.floor(Math.random() * allLinks.length)];
 
-  res.json(latestGallery);
+  res.json(latestGallery, randomLink);
+    
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 module.exports = router;

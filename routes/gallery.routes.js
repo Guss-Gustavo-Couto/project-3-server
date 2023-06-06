@@ -13,7 +13,8 @@ const Gallery = require("../models/Gallery.model");
 
 // GET Route to display all Inutil Websites
 router.get("/gallery", async (req, res) => {
-  try {
+  try { 
+
     let allSites = await Gallery.find().populate("reviews");
 
     let ratingSum = 0;
@@ -32,7 +33,13 @@ router.get("/gallery", async (req, res) => {
       ratingLength = 0;
     }
 
-    res.json(allSites);
+    const latestGallery = allSites.sort((a, b) => b.createdAt - a.createdAt);
+    const newstGallery = allSites.sort((b, a) => a.createdAt - b.createdAt);
+    const topRated = allSites.sort((a, b) => b.avg - a.avg);
+    const moreReviews = allSites.sort((a, b) => b.reviews.length - a.reviews.length
+    );
+
+    res.json(allSites, newstGallery, latestGallery, topRated, moreReviews);
   } catch (error) {
     res.json(error);
   }
