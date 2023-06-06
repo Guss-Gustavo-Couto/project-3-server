@@ -14,10 +14,8 @@ router.get("/", async (req, res, next) => {
   try {
     const allGallery = await Gallery.find();
     const latestGallery = allGallery.sort((a, b) => b.createdAt - a.createdAt);
-    const allLinks = [await Gallery.link.find().populate("links")];
-    const randomLink = allLinks[Math.floor(Math.random() * allLinks.length)];
-
-  res.json(latestGallery, randomLink);
+    
+  res.json(latestGallery);
     
   } catch (error) {
     console.error(error);

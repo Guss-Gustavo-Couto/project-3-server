@@ -33,13 +33,7 @@ router.get("/gallery", async (req, res) => {
       ratingLength = 0;
     }
 
-    const latestGallery = allSites.sort((a, b) => b.createdAt - a.createdAt);
-    const newstGallery = allSites.sort((b, a) => a.createdAt - b.createdAt);
-    const topRated = allSites.sort((a, b) => b.avg - a.avg);
-    const moreReviews = allSites.sort((a, b) => b.reviews.length - a.reviews.length
-    );
-
-    res.json(allSites, newstGallery, latestGallery, topRated, moreReviews);
+    res.json(allSites);
   } catch (error) {
     res.json(error);
   }
