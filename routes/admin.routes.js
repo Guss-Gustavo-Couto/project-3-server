@@ -38,7 +38,7 @@ router.get("/admin", async (req, res) => {
 });
 
 // Post Route to display add admin type
-router.put("/isadmin", async (req, res) => {
+router.put("/admin", async (req, res) => {
   const { _id, admin } = req.body;
   try {
     const updateAdmin = await User.findByIdAndUpdate(
