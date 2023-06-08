@@ -13,8 +13,7 @@ const cookieParser = require("cookie-parser");
 // unless the request is made from the same domain, by default express wont accept POST requests
 const cors = require("cors");
 
-const FRONTEND_URL = process.env.ORIGIN
-
+const FRONTEND_URL = process.env.ORIGIN;
 
 // Middleware configuration
 module.exports = (app) => {
@@ -22,23 +21,23 @@ module.exports = (app) => {
   // Services like Fly use something called a proxy and you need to add this to your server
   app.set("trust proxy", 1);
 
-// Middleware configuration
+  // Middleware configuration
 
   // When deployed, our backend will not receive requests directly, but from a proxy
-  // server which receives all the requests and then forwards them to our server. 
+  // server which receives all the requests and then forwards them to our server.
   // Hosting services like Heroku use a proxy.
   // We set the following option to allow requests coming from a proxy server.
-  app.set('trust proxy', 1);
- 
+  app.set("trust proxy", 1);
+
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({
       credentials: true,
-      origin: process.env.ORIGIN || 'http://localhost:3000'
+      origin: [process.env.ORIGIN, "http://localhost:3000"],
     })
   );
 
-////
+  ////
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({
@@ -54,6 +53,3 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
 };
-
-
-
